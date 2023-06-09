@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMap_WpfAndWinForm", "GMap_WpfAndWinForm\GMap_WpfAndWinForm.csproj", "{60435A6F-62DC-44F0-8DEF-1232567C0023}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMap_WpfAndWinForm.ControlLibrary", "GMap_WpfAndWinForm.ControlLibrary\GMap_WpfAndWinForm.ControlLibrary.csproj", "{0A0D805B-CED9-4865-811C-D095E8FBC08E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMap_WpfAndWinForm.ControlLibrary", "GMap_WpfAndWinForm.ControlLibrary\GMap_WpfAndWinForm.ControlLibrary.csproj", "{0A0D805B-CED9-4865-811C-D095E8FBC08E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
