@@ -15,4 +15,14 @@
 ```
 <UseWindowsForms>true</UseWindowsForms>
 ```
-Або в властивостях проекта відзначте  «Використовувати WinForms в цьому проекті».
+Або в властивостях проекту відзначте «Використовувати WinForms в цьому проекті».
+### Встановлення пакетів NuGet.
+В проекті «GMap_WpfAndWinForm.ControlLibrary», встановіть пакет «GMap.NET.WinForms», автор Jurgen De Leon Rodriguez (https://github.com/judero01col/GMap.NET).  
+Проект «GMap_WpfAndWinForm.ControlLibrary» буде містити мапу GMap.Net, вся логіки використання візуального компонента мапи буде розміщена саме в цьому проекті.
+### Розмітка простору імен.
+В проекті «GMap_WpfAndWinForm.ControlLibrary» додоайте простори імен (таці):
+ - WinFomsComponents.  
+Простір буде містити всі компоненти WinFoms. Мапа GMap.NET.WinForms, буде розміщена в цьому просторі.
+ - WinFomsComponents. MyGmap. До простору WinFomsComponents додайте MyGmap.  В цьому просторі буде міститись мапа «GMap.NET.WinForms».
+
+
