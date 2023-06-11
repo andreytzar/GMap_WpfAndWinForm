@@ -64,9 +64,11 @@ xmlns:map="clr-namespace:GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyG
  - Gmap.MaxZoom = 18, Gmap.MinZoom = 2 максимальне та мінімальне збільшення мапи.
  - Gmap.MouseWheelZoomEnabled = true – Дозволяє збільшити або зменшити мапу колесом прокрутки миші.
  - Gmap.MouseWheelZoomType = MousePositionWithoutCenter – спосіб центрування мапи, при прокрутки мишкою.
- - Gmap.DragButton = MouseButtons.Left – кнопка мишки при натисканні якої буде змінюватись положення мапи.
-Основні налаштування:
- - Gmap.MapProvider  - провайдер (тип) мапи, яка буде використовуватись в компоненті (Google, Bing, OpenStreetMap та інше).
+ - Gmap.DragButton = MouseButtons.Left – кнопка мишки при натисканні якої буде змінюватись положення мапи.  
+Основні налаштування та властивості:
+ - Gmap.MapProvider - провайдер (тип) мапи, яка буде використовуватись в компоненті (Google, Bing, OpenStreetMap та інше).
+ - Gmap.Zoom – поточне збільшення (зум) мапи.
+ - Gmap.Position – поточні координати центру мапи.
 ## Частина 4. Базові інтерфейси для взаємодії з «Gmap»
 Створимо інтерфейс для вибори провайдера мапи. Для цього:
  - До класу «MyGmapHelper.cs» додайте статичний масив провайдерів
@@ -86,8 +88,10 @@ public static GMapProvider[] GMapProviders = new GMapProvider[]
 ```
         private void CMBMapProviders_SelectedValueChanged(object sender, EventArgs e)
         =>Gmap.MapProvider = CMBMapProviders.SelectedItem as GMapProvider;
+
         private void BTNZoomPlus_Click(object sender, EventArgs e)
         => Gmap.Zoom++;
+
         private void BTNZoomMinus_Click(object sender, EventArgs e)
         => Gmap.Zoom--;
 ```
@@ -97,7 +101,12 @@ CMBMapProviders.Items.AddRange(MyGmapHelper.GMapProviders);
 CMBMapProviders.SelectedIndex = 0;
 Gmap.Zoom = 8;
 ```
+ - Додомо інтерфейс для відображення поточних координат та зуму мапи:
+	 - В візуальному конструкторі компоненту «MyGmap» додайте до PanelBottom новий TextBox (Name=”TXTGmapStatus”), та додайте обробники подій Gmap OnMapZoomChanged та OnPositionChanged:
+```
+        private void Gmap_OnMapZoomChanged()
+        => TXTGmapStatus.Text = $"{Gmap.Position.Lat}, {Gmap.Position.Lng} x{Gmap.Zoom}";
 
-
-
-
+        private void Gmap_OnPositionChanged(GMap.NET.PointLatLng point)
+        => TXTGmapStatus.Text = $"{Gmap.Position.Lat}, {Gmap.Position.Lng} x{Gmap.Zoom}";
+```

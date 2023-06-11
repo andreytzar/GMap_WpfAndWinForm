@@ -22,5 +22,11 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
 
         private void BTNZoomMinus_Click(object sender, EventArgs e)
         => Gmap.Zoom--;
+
+        private void Gmap_OnMapZoomChanged()
+        => TXTGmapStatus.Text = $"{Gmap.Position.Lat}, {Gmap.Position.Lng} x{Gmap.Zoom}";
+
+        private void Gmap_OnPositionChanged(GMap.NET.PointLatLng point)
+        => TXTGmapStatus.Text = $"{Gmap.Position.Lat}, {Gmap.Position.Lng} x{Gmap.Zoom}";
     }
 }
