@@ -40,7 +40,7 @@
 В проекті «GMap_WpfAndWinForm.ControlLibrary», в просторі «WinFomsComponents.MyGmap», додайте новий елемент управління користувача Windows Forms, з назвою «MyGmap». Це буде шаблон візуального компонента мапи.
  - В конструкторі елемента користувача «MyGmap», додайте візуальні компоненти:
 	- GMap.NET.WindowsForms.GMapControl, назва Gmap, властивості: Dock = DockStyle.Fill, DisableFocusOnMouseEnter = true;
-	- Додайте 4 панелі з назвами PanelLeft, PanelTop, PanelRight, PanelBottom. Властивість BackColor=Transparent, та встановіть властивість Dock, відповідно в Left, Right, Bottom та Top. Ширину або висоту також встановіть відповідно в 23.
+	- Додайте 4 панелі з назвами PanelLeft, PanelTop, PanelRight, PanelBottom. ВластивістІ BackColor = Color.FromArgb(0, 0, 0, 0), Parent = Gmap, та встановіть властивість Dock, відповідно в Left, Right, Bottom та Top. Ширину або висоту також встановіть відповідно в 23.
  - Додайте публічний статичний клас MyGmapHelper.cs, цей клас буду містити допоміжні компоненти мапи.
   
 Створений компонент вже можливо  використовувати в головному проекті «GMap_WpfAndWinForm». Для цього в Проекті «GMap_WpfAndWinForm», в XAML розмітці головного вікна «MainWindow.xaml», додайте простір імен:
@@ -61,9 +61,10 @@ xmlns:map="clr-namespace:GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyG
  - Gmap.MarkersEnabled = true – дозволити маркери. Дозволяє наносити, мітки, маркери, малювати різні об’єкти на мапі.
  - Gmap.PolygonsEnabled = true – Дозволяє полігони, та лінії, підсвічувати зони, та інше.
  - Gmap.RoutesEnabled = true – Дозволяє буду вати маршрути, вираховувати відстані.
- - Gmap.MaxZoom = 2, Gmap.MinZoom = 18 максимальне та мінімальне збільшення мапи.
+ - Gmap.MaxZoom = 18, Gmap.MinZoom = 2 максимальне та мінімальне збільшення мапи.
  - Gmap.MouseWheelZoomEnabled = true – Дозволяє збільшити або зменшити мапу колесом прокрутки миші.
  - Gmap.MouseWheelZoomType = MousePositionWithoutCenter – спосіб центрування мапи, при прокрутки мишкою.
+ - Gmap.DragButton = MouseButtons.Left – кнопка мишки при натисканні якої буде змінюватись положення мапи.
 Основні налаштування:
  - Gmap.MapProvider  - провайдер (тип) мапи, яка буде використовуватись в компоненті (Google, Bing, OpenStreetMap та інше).
 ## Частина 4. Базові інтерфейси для взаємодії з «Gmap»
@@ -96,4 +97,7 @@ CMBMapProviders.Items.AddRange(MyGmapHelper.GMapProviders);
 CMBMapProviders.SelectedIndex = 0;
 Gmap.Zoom = 8;
 ```
+
+
+
 
