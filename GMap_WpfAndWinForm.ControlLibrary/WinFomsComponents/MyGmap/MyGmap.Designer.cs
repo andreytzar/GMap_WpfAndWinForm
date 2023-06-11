@@ -158,6 +158,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
             Gmap.MinZoom = 2;
             Gmap.MouseWheelZoomEnabled = true;
             Gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
+            Gmap.DragButton = System.Windows.Forms.MouseButtons.Left;
             Gmap.Name = "Gmap";
             Gmap.NegativeMode = false;
             Gmap.PolygonsEnabled = true;
@@ -168,7 +169,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
             Gmap.ShowTileGridLines = false;
             Gmap.Size = new Size(642, 289);
             Gmap.TabIndex = 0;
-            Gmap.Zoom = 8D;
             Gmap.OnPositionChanged += Gmap_OnPositionChanged;
             Gmap.OnMapZoomChanged += Gmap_OnMapZoomChanged;
             // 
