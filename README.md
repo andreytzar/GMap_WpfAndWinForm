@@ -19,7 +19,7 @@
 <UseWindowsForms>true</UseWindowsForms>
 ```
 Або в властивостях проекту відзначте «Використовувати WinForms в цьому проекті».  
-В проекті «GMap_WpfAndWinForm» додайте посилання на проект «GMap_WpfAndWinForm.ControlLibrary».
+В проекті «GMap_WpfAndWinForm» додайте посилання на проект «GMap_WpfAndWinForm.ControlLibrary».  
 ```
   <ItemGroup>
     <ProjectReference Include="..\GMap_WpfAndWinForm.ControlLibrary\GMap_WpfAndWinForm.ControlLibrary.csproj" />
@@ -41,10 +41,11 @@
  - В конструкторі елемента користувача «MyGmap», додайте візуальні компоненти:
 	- GMap.NET.WindowsForms.GMapControl, назва Gmap, властивості: Dock = DockStyle.Fill, DisableFocusOnMouseEnter = true;
 	- Додайте 4 панелі з назвами PanelLeft, PanelTop, PanelRight, PanelBottom. Властивість BackColor=Transparent, та встановіть властивість Dock, відповідно в Left, Right, Bottom та Top. Ширину або висоту також встановіть відповідно в 23.
+ - Додайте публічний статичний клас MyGmapHelper.cs, цей клас буду містити допоміжні компоненти мапи.
   
 Створений компонент вже можливо  використовувати в головному проекті «GMap_WpfAndWinForm». Для цього в Проекті «GMap_WpfAndWinForm», в XAML розмітці головного вікна «MainWindow.xaml», додайте простір імен:
 ```
-        xmlns:map="clr-namespace:GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap;assembly=GMap_WpfAndWinForm.ControlLibrary"
+xmlns:map="clr-namespace:GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap;assembly=GMap_WpfAndWinForm.ControlLibrary"
 ```
 Та додайте сам компонент мапи, огорнутий в WindowsFormsHost
 ```
@@ -55,3 +56,44 @@
     </Grid>
 ```
 Підготовка завершена, можна спробувати скомпілювати та запустити рішення.
+## Частина 3. Основні властивості «Gmap»
+Попередні налаштування:
+ - Gmap.MarkersEnabled = true – дозволити маркери. Дозволяє наносити, мітки, маркери, малювати різні об’єкти на мапі.
+ - Gmap.PolygonsEnabled = true – Дозволяє полігони, та лінії, підсвічувати зони, та інше.
+ - Gmap.RoutesEnabled = true – Дозволяє буду вати маршрути, вираховувати відстані.
+ - Gmap.MaxZoom = 2, Gmap.MinZoom = 18 максимальне та мінімальне збільшення мапи.
+ - Gmap.MouseWheelZoomEnabled = true – Дозволяє збільшити або зменшити мапу колесом прокрутки миші.
+ - Gmap.MouseWheelZoomType = MousePositionWithoutCenter – спосіб центрування мапи, при прокрутки мишкою.
+Основні налаштування:
+ - Gmap.MapProvider  - провайдер (тип) мапи, яка буде використовуватись в компоненті (Google, Bing, OpenStreetMap та інше).
+## Частина 4. Базові інтерфейси для взаємодії з «Gmap»
+Створимо інтерфейс для вибори провайдера мапи. Для цього:
+ - До класу «MyGmapHelper.cs» додайте статичний масив провайдерів
+```
+public static GMapProvider[] GMapProviders = new GMapProvider[]
+        {
+        ArcGIS_World_Physical_MapProvider.Instance,
+        ArcGIS_World_Shaded_Relief_MapProvider.Instance,ArcGIS_World_Street_MapProvider.Instance, ArcGIS_World_Terrain_Base_MapProvider.Instance,
+        ArcGIS_World_Topo_MapProvider.Instance,BingHybridMapProvider.Instance,BingMapProvider.Instance,BingOSMapProvider.Instance,
+        BingSatelliteMapProvider.Instance,GoogleHybridMapProvider.Instance,GoogleMapProvider.Instance,GoogleSatelliteMapProvider.Instance,
+        GoogleTerrainMapProvider.Instance,OpenCycleMapProvider.Instance,
+        OpenCycleTransportMapProvider.Instance, OpenSeaMapHybridProvider.Instance, OpenStreet4UMapProvider.Instance,
+        OpenStreetMapProvider.Instance,UMPMapProvider.Instance,WikiMapiaMapProvider.Instance
+        };
+```
+ - В візуальному конструкторі компоненту «MyGmap» додайте до PanelTop новий ComboBox (Name=”CMBMapProviders”), 2 кнопки (Name=” BTNZoomPlus”, Name=” BTNZoomMinus”). Додайте метод CMBMapProviders CMBMapProviders_SelectedValueChanged, та методи OnClick кнопок зуму:
+```
+        private void CMBMapProviders_SelectedValueChanged(object sender, EventArgs e)
+        =>Gmap.MapProvider = CMBMapProviders.SelectedItem as GMapProvider;
+        private void BTNZoomPlus_Click(object sender, EventArgs e)
+        => Gmap.Zoom++;
+        private void BTNZoomMinus_Click(object sender, EventArgs e)
+        => Gmap.Zoom--;
+```
+ - В конструкторі класу «MyGmap» додайте
+```
+CMBMapProviders.Items.AddRange(MyGmapHelper.GMapProviders);
+CMBMapProviders.SelectedIndex = 0;
+Gmap.Zoom = 8;
+```
+

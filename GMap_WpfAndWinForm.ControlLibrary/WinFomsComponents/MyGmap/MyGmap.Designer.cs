@@ -1,4 +1,6 @@
-﻿namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
+﻿using System.Drawing;
+
+namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
 {
     partial class MyGmap
     {
@@ -33,8 +35,12 @@
             PanelLeft = new System.Windows.Forms.Panel();
             PanelBottom = new System.Windows.Forms.Panel();
             PanelTop = new System.Windows.Forms.FlowLayoutPanel();
+            CMBMapProviders = new System.Windows.Forms.ComboBox();
+            BTNZoomPlus = new System.Windows.Forms.Button();
+            BTNZoomMinus = new System.Windows.Forms.Button();
             Gmap = new GMap.NET.WindowsForms.GMapControl();
             panel1.SuspendLayout();
+            PanelTop.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -52,7 +58,8 @@
             // 
             // PanelRight
             // 
-            PanelRight.BackColor = System.Drawing.Color.Transparent;
+            PanelRight.BackColor = Color.FromArgb(0, 0, 0, 0); 
+            PanelRight.Parent = Gmap;
             PanelRight.Dock = System.Windows.Forms.DockStyle.Right;
             PanelRight.Location = new System.Drawing.Point(619, 23);
             PanelRight.Name = "PanelRight";
@@ -61,7 +68,8 @@
             // 
             // PanelLeft
             // 
-            PanelLeft.BackColor = System.Drawing.Color.Transparent;
+            PanelLeft.BackColor = Color.FromArgb(0, 0, 0, 0); 
+            PanelLeft.Parent = Gmap;
             PanelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             PanelLeft.Location = new System.Drawing.Point(0, 23);
             PanelLeft.Name = "PanelLeft";
@@ -70,7 +78,8 @@
             // 
             // PanelBottom
             // 
-            PanelBottom.BackColor = System.Drawing.Color.Transparent;
+            PanelBottom.BackColor = Color.FromArgb(0,0,0,0);
+            PanelBottom.Parent = Gmap;
             PanelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             PanelBottom.Location = new System.Drawing.Point(0, 266);
             PanelBottom.Name = "PanelBottom";
@@ -79,12 +88,52 @@
             // 
             // PanelTop
             // 
-            PanelTop.BackColor = System.Drawing.Color.Transparent;
+            PanelTop.BackColor = Color.FromArgb(0, 0, 0, 0);
+            PanelTop.Parent = Gmap;
+            PanelTop.Controls.Add(CMBMapProviders);
+            PanelTop.Controls.Add(BTNZoomPlus);
+            PanelTop.Controls.Add(BTNZoomMinus);
             PanelTop.Dock = System.Windows.Forms.DockStyle.Top;
             PanelTop.Location = new System.Drawing.Point(0, 0);
             PanelTop.Name = "PanelTop";
             PanelTop.Size = new System.Drawing.Size(642, 23);
             PanelTop.TabIndex = 1;
+            // 
+            // CMBMapProviders
+            // 
+            CMBMapProviders.Dock = System.Windows.Forms.DockStyle.Left;
+            CMBMapProviders.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            CMBMapProviders.FormattingEnabled = true;
+            CMBMapProviders.Location = new System.Drawing.Point(0, 0);
+            CMBMapProviders.Margin = new System.Windows.Forms.Padding(0);
+            CMBMapProviders.Name = "CMBMapProviders";
+            CMBMapProviders.Size = new System.Drawing.Size(121, 23);
+            CMBMapProviders.TabIndex = 0;
+            CMBMapProviders.SelectedValueChanged += CMBMapProviders_SelectedValueChanged;
+            // 
+            // BTNZoomPlus
+            // 
+            BTNZoomPlus.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            BTNZoomPlus.Location = new System.Drawing.Point(124, 0);
+            BTNZoomPlus.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            BTNZoomPlus.Name = "BTNZoomPlus";
+            BTNZoomPlus.Size = new System.Drawing.Size(23, 23);
+            BTNZoomPlus.TabIndex = 1;
+            BTNZoomPlus.Text = "+";
+            BTNZoomPlus.UseVisualStyleBackColor = true;
+            BTNZoomPlus.Click += BTNZoomPlus_Click;
+            // 
+            // BTNZoomMinus
+            // 
+            BTNZoomMinus.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            BTNZoomMinus.Location = new System.Drawing.Point(150, 0);
+            BTNZoomMinus.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            BTNZoomMinus.Name = "BTNZoomMinus";
+            BTNZoomMinus.Size = new System.Drawing.Size(23, 23);
+            BTNZoomMinus.TabIndex = 2;
+            BTNZoomMinus.Text = "-";
+            BTNZoomMinus.UseVisualStyleBackColor = true;
+            BTNZoomMinus.Click += BTNZoomMinus_Click;
             // 
             // Gmap
             // 
@@ -97,10 +146,11 @@
             Gmap.LevelsKeepInMemory = 5;
             Gmap.Location = new System.Drawing.Point(0, 0);
             Gmap.MarkersEnabled = true;
-            Gmap.MaxZoom = 2;
+            Gmap.MaxZoom = 18;
             Gmap.MinZoom = 2;
             Gmap.MouseWheelZoomEnabled = true;
-            Gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            Gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
+            Gmap.DragButton = System.Windows.Forms.MouseButtons.Left;
             Gmap.Name = "Gmap";
             Gmap.NegativeMode = false;
             Gmap.PolygonsEnabled = true;
@@ -111,17 +161,17 @@
             Gmap.ShowTileGridLines = false;
             Gmap.Size = new System.Drawing.Size(642, 289);
             Gmap.TabIndex = 0;
-            Gmap.Zoom = 0D;
+            Gmap.Zoom = 8;
             // 
             // MyGmap
             // 
-            PanelTop.Parent = Gmap;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             Controls.Add(panel1);
             Name = "MyGmap";
             Size = new System.Drawing.Size(642, 289);
             panel1.ResumeLayout(false);
+            PanelTop.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -133,5 +183,8 @@
         private System.Windows.Forms.Panel PanelLeft;
         private System.Windows.Forms.Panel PanelBottom;
         private System.Windows.Forms.Panel PanelRight;
+        private System.Windows.Forms.ComboBox CMBMapProviders;
+        private System.Windows.Forms.Button BTNZoomPlus;
+        private System.Windows.Forms.Button BTNZoomMinus;
     }
 }
