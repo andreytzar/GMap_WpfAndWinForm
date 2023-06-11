@@ -19,7 +19,12 @@
 <UseWindowsForms>true</UseWindowsForms>
 ```
 Або в властивостях проекту відзначте «Використовувати WinForms в цьому проекті».  
-В проекті «GMap_WpfAndWinForm» додайте посилання на проект «GMap_WpfAndWinForm.ControlLibrary»
+В проекті «GMap_WpfAndWinForm» додайте посилання на проект «GMap_WpfAndWinForm.ControlLibrary».
+```
+  <ItemGroup>
+    <ProjectReference Include="..\GMap_WpfAndWinForm.ControlLibrary\GMap_WpfAndWinForm.ControlLibrary.csproj" />
+  </ItemGroup>
+```
 ### Встановлення пакетів NuGet.  
 ---
 В проекті «GMap_WpfAndWinForm.ControlLibrary», встановіть пакет NuGet «GMap.NET.WinForms», автор Jurgen De Leon Rodriguez (https://github.com/judero01col/GMap.NET).  
@@ -50,5 +55,3 @@
     </Grid>
 ```
 Підготовка завершена, можна спробувати скомпілювати та запустити рішення.
-
-
