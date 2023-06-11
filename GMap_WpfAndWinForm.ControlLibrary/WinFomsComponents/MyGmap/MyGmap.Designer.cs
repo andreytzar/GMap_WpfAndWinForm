@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new System.Windows.Forms.Panel();
+            PanelRight = new System.Windows.Forms.Panel();
             PanelLeft = new System.Windows.Forms.Panel();
+            PanelBottom = new System.Windows.Forms.Panel();
             PanelTop = new System.Windows.Forms.FlowLayoutPanel();
             Gmap = new GMap.NET.WindowsForms.GMapControl();
-            PanelBottom = new System.Windows.Forms.Panel();
-            PanelRight = new System.Windows.Forms.Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,16 +50,36 @@
             panel1.Size = new System.Drawing.Size(642, 289);
             panel1.TabIndex = 0;
             // 
+            // PanelRight
+            // 
+            PanelRight.BackColor = System.Drawing.Color.Transparent;
+            PanelRight.Dock = System.Windows.Forms.DockStyle.Right;
+            PanelRight.Location = new System.Drawing.Point(619, 23);
+            PanelRight.Name = "PanelRight";
+            PanelRight.Size = new System.Drawing.Size(23, 243);
+            PanelRight.TabIndex = 4;
+            // 
             // PanelLeft
             // 
+            PanelLeft.BackColor = System.Drawing.Color.Transparent;
             PanelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             PanelLeft.Location = new System.Drawing.Point(0, 23);
             PanelLeft.Name = "PanelLeft";
             PanelLeft.Size = new System.Drawing.Size(23, 243);
             PanelLeft.TabIndex = 2;
             // 
+            // PanelBottom
+            // 
+            PanelBottom.BackColor = System.Drawing.Color.Transparent;
+            PanelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            PanelBottom.Location = new System.Drawing.Point(0, 266);
+            PanelBottom.Name = "PanelBottom";
+            PanelBottom.Size = new System.Drawing.Size(642, 23);
+            PanelBottom.TabIndex = 3;
+            // 
             // PanelTop
             // 
+            PanelTop.BackColor = System.Drawing.Color.Transparent;
             PanelTop.Dock = System.Windows.Forms.DockStyle.Top;
             PanelTop.Location = new System.Drawing.Point(0, 0);
             PanelTop.Name = "PanelTop";
@@ -93,24 +113,9 @@
             Gmap.TabIndex = 0;
             Gmap.Zoom = 0D;
             // 
-            // PanelBottom
-            // 
-            PanelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            PanelBottom.Location = new System.Drawing.Point(0, 266);
-            PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new System.Drawing.Size(642, 23);
-            PanelBottom.TabIndex = 3;
-            // 
-            // PanelRight
-            // 
-            PanelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            PanelRight.Location = new System.Drawing.Point(619, 23);
-            PanelRight.Name = "PanelRight";
-            PanelRight.Size = new System.Drawing.Size(23, 243);
-            PanelRight.TabIndex = 4;
-            // 
             // MyGmap
             // 
+            PanelTop.Parent = Gmap;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             Controls.Add(panel1);
