@@ -64,7 +64,8 @@ xmlns:map="clr-namespace:GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyG
  - Gmap.MaxZoom = 18, Gmap.MinZoom = 2 максимальне та м≥н≥мальне зб≥льшенн€ мапи.
  - Gmap.MouseWheelZoomEnabled = true Ц ƒозвол€Ї зб≥льшити або зменшити мапу колесом прокрутки миш≥.
  - Gmap.MouseWheelZoomType = MousePositionWithoutCenter Ц спос≥б центруванн€ мапи, при прокрутки мишкою.
- - Gmap.DragButton = MouseButtons.Left Ц кнопка мишки при натисканн≥ €коњ буде зм≥нюватись положенн€ мапи.  
+ - Gmap.DragButton = MouseButtons.Left Ц кнопка мишки при натисканн≥ €коњ буде зм≥нюватись положенн€ мапи.   
+---
 ќсновн≥ налаштуванн€ та властивост≥:
  - Gmap.MapProvider - провайдер (тип) мапи, €ка буде використовуватись в компонент≥ (Google, Bing, OpenStreetMap та ≥нше).
  - Gmap.Zoom Ц поточне зб≥льшенн€ (зум) мапи.
@@ -110,3 +111,8 @@ Gmap.Zoom = 8;
         private void Gmap_OnPositionChanged(GMap.NET.PointLatLng point)
         => TXTGmapStatus.Text = $"{Gmap.Position.Lat}, {Gmap.Position.Lng} x{Gmap.Zoom}";
 ```
+
+
+
+
+
