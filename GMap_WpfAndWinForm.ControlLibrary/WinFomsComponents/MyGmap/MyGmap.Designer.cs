@@ -154,7 +154,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
             Gmap.LevelsKeepInMemory = 5;
             Gmap.Location = new Point(0, 0);
             Gmap.MarkersEnabled = true;
-            Gmap.MaxZoom = 18;
+            Gmap.MaxZoom = 25;
             Gmap.MinZoom = 2;
             Gmap.MouseWheelZoomEnabled = true;
             Gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
@@ -177,6 +177,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             Controls.Add(panel1);
+            
             Name = "MyGmap";
             Size = new Size(642, 289);
             panel1.ResumeLayout(false);

@@ -12,6 +12,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
             CMBMapProviders.Items.AddRange(MyGmapHelper.GMapProviders);
             CMBMapProviders.SelectedIndex = 0;
             Gmap.Zoom = 8;
+            PanelBottom.Parent = PanelLeft.Parent = PanelTop.Parent = PanelRight.Parent = Gmap;
         }
 
         private void CMBMapProviders_SelectedValueChanged(object sender, EventArgs e)
@@ -24,9 +25,9 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
         => Gmap.Zoom--;
 
         private void Gmap_OnMapZoomChanged()
-        => TXTGmapStatus.Text = $"{Gmap.Position.Lat}, {Gmap.Position.Lng} x{Gmap.Zoom}";
+        => TXTGmapStatus.Text = $"{Gmap.Position.Lat.ToString().Replace(',','.')}, {Gmap.Position.Lng.ToString().Replace(',', '.')} x{Gmap.Zoom}";
 
         private void Gmap_OnPositionChanged(GMap.NET.PointLatLng point)
-        => TXTGmapStatus.Text = $"{Gmap.Position.Lat}, {Gmap.Position.Lng} x{Gmap.Zoom}";
+        => TXTGmapStatus.Text = $"{Gmap.Position.Lat.ToString().Replace(',', '.')}, {Gmap.Position.Lng.ToString().Replace(',', '.')} x{Gmap.Zoom}";
     }
 }
