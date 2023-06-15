@@ -1,3 +1,6 @@
+https://www.linkedin.com/in/andrey-tzarkov/
+https://github.com/andreytzar/GMap_WpfAndWinForm
+
 # GMap_WpfAndWinForm
 Цей проект демонструє застосунок з використанням мапи GMap.NET, автор Jurgen De Leon Rodriguez (https://github.com/judero01col/GMap.NET).  
 Також проект демонструє використання компонентів WinForms в проектах застосунків WPF.NET.  
