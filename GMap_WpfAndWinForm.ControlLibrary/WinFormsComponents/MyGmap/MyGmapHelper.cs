@@ -1,7 +1,7 @@
 ﻿using GMap.NET.MapProviders;
 
 
-namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
+namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
 {
     public static class MyGmapHelper
     {

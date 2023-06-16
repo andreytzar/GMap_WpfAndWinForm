@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
+namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
 {
     partial class MyGmap
     {
@@ -157,8 +157,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
             Gmap.MaxZoom = 25;
             Gmap.MinZoom = 2;
             Gmap.MouseWheelZoomEnabled = true;
-            Gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
-            Gmap.DragButton = System.Windows.Forms.MouseButtons.Left;
+            Gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
             Gmap.Name = "Gmap";
             Gmap.NegativeMode = false;
             Gmap.PolygonsEnabled = true;
@@ -169,6 +168,8 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
             Gmap.ShowTileGridLines = false;
             Gmap.Size = new Size(642, 289);
             Gmap.TabIndex = 0;
+            Gmap.Zoom = 0D;
+            Gmap.OnMapClick += Gmap_OnMapClick;
             Gmap.OnPositionChanged += Gmap_OnPositionChanged;
             Gmap.OnMapZoomChanged += Gmap_OnMapZoomChanged;
             // 
@@ -177,7 +178,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             Controls.Add(panel1);
-            
             Name = "MyGmap";
             Size = new Size(642, 289);
             panel1.ResumeLayout(false);
