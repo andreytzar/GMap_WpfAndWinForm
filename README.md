@@ -38,7 +38,7 @@ https://github.com/andreytzar/GMap_WpfAndWinForm
  - WinFormsComponents.  
 Простір буде містити всі компоненти WinFoms. Мапа GMap.NET.WinForms, буде розміщена в цьому просторі.
  - WinFormsComponents.MyGmap. До простору WinFomsComponents додайте MyGmap. В цьому просторі буде міститись візуальний компонент користувача- мапа «GMap.NET.WinForms».  
- - WinFormsComponents.MyGmap.MarkersPolygonsRoutes. До MyGmap доадйте простір MarkersPolygonsRoutes. В цоьму прострі будуть створені маркери, маршрути, полігони.  
+ - WinFormsComponents.MyGmap.MarkersPolygonsRoutes. До MyGmap додайте простір MarkersPolygonsRoutes. В цьому просторі будуть створені маркери, маршрути, полігони.  
 ## Частина 2. Розмітка елемента управління користувача «MyGmap»
 ---
 В проекті «GMap_WpfAndWinForm.ControlLibrary», в просторі «WinFomsComponents.MyGmap», додайте новий елемент управління користувача Windows Forms, з назвою «MyGmap». Це буде шаблон візуального компонента мапи.

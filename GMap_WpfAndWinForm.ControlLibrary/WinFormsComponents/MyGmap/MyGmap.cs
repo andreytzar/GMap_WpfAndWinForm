@@ -9,7 +9,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
 {
     public partial class MyGmap : UserControl
     {
-        GMapOverlay OverlayMarkers = new("OverlayMarkers");
+        private GMapOverlay OverlayMarkers = new("OverlayMarkers");
         public MyGmap()
         {
             InitializeComponent();
@@ -21,6 +21,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             Gmap.Zoom = 8;
             PanelBottom.Parent = PanelLeft.Parent = PanelTop.Parent = PanelRight.Parent = Gmap;
             Gmap.Overlays.Add(OverlayMarkers);
+            OverlayMarkers.Control
         }
 
         private void CMBMapProviders_SelectedValueChanged(object sender, EventArgs e)

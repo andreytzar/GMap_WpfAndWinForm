@@ -1,11 +1,9 @@
-﻿
-
-using GMap.NET;
+﻿using GMap.NET;
 using GMap.NET.WindowsForms;
 using System;
 using System.Drawing;
 using System.Runtime.Serialization;
-using System.Windows.Media;
+
 
 namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap.MarkersPolygonsRoutes
 {
@@ -29,6 +27,5 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap.MarkersPol
         }
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
         =>GetObjectData(info, context);
-        
     }
 }
