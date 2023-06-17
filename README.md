@@ -35,9 +35,9 @@ https://github.com/andreytzar/GMap_WpfAndWinForm
 ###	Розмітка простору імен.
 ---
 В проекті «GMap_WpfAndWinForm.ControlLibrary» додайте простори імен (таці):
- - WinFomsComponents.  
+ - WinFormsComponents.  
 Простір буде містити всі компоненти WinFoms. Мапа GMap.NET.WinForms, буде розміщена в цьому просторі.
- - WinFomsComponents.MyGmap. До простору WinFomsComponents додайте MyGmap. В цьому просторі буде міститись візуальний компонент користувача- мапа «GMap.NET.WinForms».  
+ - WinFormsComponents.MyGmap. До простору WinFomsComponents додайте MyGmap. В цьому просторі буде міститись візуальний компонент користувача- мапа «GMap.NET.WinForms».  
 ## Частина 2. Розмітка елемента управління користувача «MyGmap»
 ---
 В проекті «GMap_WpfAndWinForm.ControlLibrary», в просторі «WinFomsComponents.MyGmap», додайте новий елемент управління користувача Windows Forms, з назвою «MyGmap». Це буде шаблон візуального компонента мапи.
@@ -48,7 +48,7 @@ https://github.com/andreytzar/GMap_WpfAndWinForm
   
 Створений компонент вже можливо  використовувати в головному проекті «GMap_WpfAndWinForm». Для цього в Проекті «GMap_WpfAndWinForm», в XAML розмітці головного вікна «MainWindow.xaml», додайте простір імен:
 ```
-xmlns:map="clr-namespace:GMap_WpfAndWinForm.ControlLibrary.WinFomsComponents.MyGmap;assembly=GMap_WpfAndWinForm.ControlLibrary"
+xmlns:map="clr-namespace:GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap;assembly=GMap_WpfAndWinForm.ControlLibrary"
 ```
 Та додайте сам компонент мапи, огорнутий в WindowsFormsHost
 ```
