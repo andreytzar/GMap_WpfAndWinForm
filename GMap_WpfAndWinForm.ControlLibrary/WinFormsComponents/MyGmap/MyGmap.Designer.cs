@@ -33,6 +33,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             panel1 = new System.Windows.Forms.Panel();
             PanelRight = new System.Windows.Forms.Panel();
             PanelLeft = new System.Windows.Forms.Panel();
+            BTNAddMarker = new System.Windows.Forms.Button();
             PanelBottom = new System.Windows.Forms.Panel();
             TXTGmapStatus = new System.Windows.Forms.TextBox();
             PanelTop = new System.Windows.Forms.FlowLayoutPanel();
@@ -41,6 +42,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             BTNZoomMinus = new System.Windows.Forms.Button();
             Gmap = new GMap.NET.WindowsForms.GMapControl();
             panel1.SuspendLayout();
+            PanelLeft.SuspendLayout();
             PanelBottom.SuspendLayout();
             PanelTop.SuspendLayout();
             SuspendLayout();
@@ -70,11 +72,24 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             // PanelLeft
             // 
             PanelLeft.BackColor = Color.FromArgb(0, 0, 0, 0);
+            PanelLeft.Controls.Add(BTNAddMarker);
             PanelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             PanelLeft.Location = new Point(0, 23);
             PanelLeft.Name = "PanelLeft";
             PanelLeft.Size = new Size(23, 243);
             PanelLeft.TabIndex = 2;
+            // 
+            // BTNAddMarker
+            // 
+            BTNAddMarker.BackColor = SystemColors.Control;
+            BTNAddMarker.Location = new Point(0, 0);
+            BTNAddMarker.Margin = new System.Windows.Forms.Padding(0);
+            BTNAddMarker.Name = "BTNAddMarker";
+            BTNAddMarker.Size = new Size(23, 23);
+            BTNAddMarker.TabIndex = 0;
+            BTNAddMarker.Text = "M";
+            BTNAddMarker.UseVisualStyleBackColor = false;
+            BTNAddMarker.Click += BTNAddMarker_Click;
             // 
             // PanelBottom
             // 
@@ -169,7 +184,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             Gmap.Size = new Size(642, 289);
             Gmap.TabIndex = 0;
             Gmap.Zoom = 0D;
-            Gmap.OnMapClick += Gmap_OnMapClick;
             Gmap.OnPositionChanged += Gmap_OnPositionChanged;
             Gmap.OnMapZoomChanged += Gmap_OnMapZoomChanged;
             // 
@@ -181,6 +195,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             Name = "MyGmap";
             Size = new Size(642, 289);
             panel1.ResumeLayout(false);
+            PanelLeft.ResumeLayout(false);
             PanelBottom.ResumeLayout(false);
             PanelBottom.PerformLayout();
             PanelTop.ResumeLayout(false);
@@ -199,5 +214,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
         private System.Windows.Forms.Button BTNZoomPlus;
         private System.Windows.Forms.Button BTNZoomMinus;
         private System.Windows.Forms.TextBox TXTGmapStatus;
+        private System.Windows.Forms.Button BTNAddMarker;
     }
 }

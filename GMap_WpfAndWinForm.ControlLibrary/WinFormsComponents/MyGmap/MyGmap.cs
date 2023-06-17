@@ -21,7 +21,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             Gmap.Zoom = 8;
             PanelBottom.Parent = PanelLeft.Parent = PanelTop.Parent = PanelRight.Parent = Gmap;
             Gmap.Overlays.Add(OverlayMarkers);
-            OverlayMarkers.Control
         }
 
         private void CMBMapProviders_SelectedValueChanged(object sender, EventArgs e)
@@ -36,13 +35,10 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
         private void Gmap_OnMapZoomChanged()
         => TXTGmapStatus.Text = $"{Gmap.Position.Lat.ToString().Replace(',', '.')}, {Gmap.Position.Lng.ToString().Replace(',', '.')} x{Gmap.Zoom}";
 
-        private void Gmap_OnPositionChanged(GMap.NET.PointLatLng point)
+        private void Gmap_OnPositionChanged(PointLatLng point)
         => TXTGmapStatus.Text = $"{Gmap.Position.Lat.ToString().Replace(',', '.')}, {Gmap.Position.Lng.ToString().Replace(',', '.')} x{Gmap.Zoom}";
 
-        private void Gmap_OnMapClick(PointLatLng pointClick, MouseEventArgs e)
-        {
-            var marker = new GmapMarkerDot(Gmap.Position);
-            OverlayMarkers.Markers.Add(marker);
-        }
+        private void BTNAddMarker_Click(object sender, EventArgs e)
+        => OverlayMarkers.Markers.Add(new GmapMarkerDot(Gmap.Position));
     }
 }
