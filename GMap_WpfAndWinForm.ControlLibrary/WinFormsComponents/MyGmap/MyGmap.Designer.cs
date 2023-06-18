@@ -33,6 +33,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             panel1 = new System.Windows.Forms.Panel();
             PanelRight = new System.Windows.Forms.Panel();
             PanelLeft = new System.Windows.Forms.Panel();
+            BTNRoute = new System.Windows.Forms.Button();
             BTNPolygon = new System.Windows.Forms.Button();
             BTNAddMarker = new System.Windows.Forms.Button();
             PanelBottom = new System.Windows.Forms.Panel();
@@ -73,13 +74,25 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             // PanelLeft
             // 
             PanelLeft.BackColor = Color.FromArgb(0, 0, 0, 0);
+            PanelLeft.Controls.Add(BTNRoute);
             PanelLeft.Controls.Add(BTNPolygon);
             PanelLeft.Controls.Add(BTNAddMarker);
-            PanelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             PanelLeft.Location = new Point(0, 23);
             PanelLeft.Name = "PanelLeft";
-            PanelLeft.Size = new Size(23, 243);
+            PanelLeft.Size = new Size(23, 70);
             PanelLeft.TabIndex = 2;
+            // 
+            // BTNRoute
+            // 
+            BTNRoute.BackColor = Color.Gainsboro;
+            BTNRoute.Location = new Point(0, 46);
+            BTNRoute.Margin = new System.Windows.Forms.Padding(0);
+            BTNRoute.Name = "BTNRoute";
+            BTNRoute.Size = new Size(23, 23);
+            BTNRoute.TabIndex = 2;
+            BTNRoute.Text = "R";
+            BTNRoute.UseVisualStyleBackColor = false;
+            BTNRoute.Click += BTNRoute_Click;
             // 
             // BTNPolygon
             // 
@@ -231,5 +244,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
         private System.Windows.Forms.TextBox TXTGmapStatus;
         private System.Windows.Forms.Button BTNAddMarker;
         private System.Windows.Forms.Button BTNPolygon;
+        private System.Windows.Forms.Button BTNRoute;
     }
 }
