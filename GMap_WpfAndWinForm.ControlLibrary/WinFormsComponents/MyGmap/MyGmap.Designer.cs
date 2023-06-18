@@ -33,6 +33,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             panel1 = new System.Windows.Forms.Panel();
             PanelRight = new System.Windows.Forms.Panel();
             PanelLeft = new System.Windows.Forms.Panel();
+            BTNPolygon = new System.Windows.Forms.Button();
             BTNAddMarker = new System.Windows.Forms.Button();
             PanelBottom = new System.Windows.Forms.Panel();
             TXTGmapStatus = new System.Windows.Forms.TextBox();
@@ -72,12 +73,25 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             // PanelLeft
             // 
             PanelLeft.BackColor = Color.FromArgb(0, 0, 0, 0);
+            PanelLeft.Controls.Add(BTNPolygon);
             PanelLeft.Controls.Add(BTNAddMarker);
             PanelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             PanelLeft.Location = new Point(0, 23);
             PanelLeft.Name = "PanelLeft";
             PanelLeft.Size = new Size(23, 243);
             PanelLeft.TabIndex = 2;
+            // 
+            // BTNPolygon
+            // 
+            BTNPolygon.BackColor = SystemColors.Control;
+            BTNPolygon.Location = new Point(0, 23);
+            BTNPolygon.Margin = new System.Windows.Forms.Padding(0);
+            BTNPolygon.Name = "BTNPolygon";
+            BTNPolygon.Size = new Size(23, 23);
+            BTNPolygon.TabIndex = 1;
+            BTNPolygon.Text = "P";
+            BTNPolygon.UseVisualStyleBackColor = false;
+            BTNPolygon.Click += BTNPolygon_Click;
             // 
             // BTNAddMarker
             // 
@@ -184,6 +198,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             Gmap.Size = new Size(642, 289);
             Gmap.TabIndex = 0;
             Gmap.Zoom = 0D;
+            Gmap.OnMapClick += Gmap_OnMapClick;
             Gmap.OnPositionChanged += Gmap_OnPositionChanged;
             Gmap.OnMapZoomChanged += Gmap_OnMapZoomChanged;
             // 
@@ -215,5 +230,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
         private System.Windows.Forms.Button BTNZoomMinus;
         private System.Windows.Forms.TextBox TXTGmapStatus;
         private System.Windows.Forms.Button BTNAddMarker;
+        private System.Windows.Forms.Button BTNPolygon;
     }
 }
