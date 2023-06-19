@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Shapes;
 
 namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
 {
@@ -65,6 +64,15 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             OverlayPolygons.Polygons.Add(polygon);
         }
 
+        private void BTNRoute_Click(object sender, EventArgs e)
+        {
+            addNewRoute = !addNewRoute;
+            ChangeBTN(sender, addNewRoute);
+            if (!addNewRoute) return;
+            route = new(new List<PointLatLng>(), $"Route {OverlayRoutes.Routes.Count}");
+            OverlayRoutes.Routes.Add(route);
+        }
+
         private void Gmap_OnMapClick(PointLatLng pointClick, MouseEventArgs e)
         {
             if (addNewPolygon)
@@ -95,15 +103,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
                 route.Points.Add(pointClick);
                 OverlayRoutes.Control.UpdateRouteLocalPosition(route);
             }
-        }
-
-        private void BTNRoute_Click(object sender, EventArgs e)
-        {
-            addNewRoute = !addNewRoute;
-            ChangeBTN(sender, addNewRoute);
-            if (!addNewRoute) return;
-            route = new(new List<PointLatLng>(), $"Route {OverlayRoutes.Routes.Count}");
-            OverlayRoutes.Routes.Add(route);
         }
 
         private void ChangeBTN(object sender, bool flag)
