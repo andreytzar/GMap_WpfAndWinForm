@@ -47,10 +47,10 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
         => Gmap.Zoom--;
 
         private void Gmap_OnMapZoomChanged()
-        => TXTGmapStatus.Text = $"{Gmap.Position.Lat.ToString().Replace(',', '.')}, {Gmap.Position.Lng.ToString().Replace(',', '.')} x{Gmap.Zoom}";
+        => TXTGmapStatus.Text = $"{Gmap.Position.Lat.ToString().Replace(',', '.')}, {Gmap.Position.Lng.ToString().Replace(',', '.')} x{Gmap.Zoom} Scale:{GetScale()}";
 
         private void Gmap_OnPositionChanged(PointLatLng point)
-        => TXTGmapStatus.Text = $"{Gmap.Position.Lat.ToString().Replace(',', '.')}, {Gmap.Position.Lng.ToString().Replace(',', '.')} x{Gmap.Zoom}";
+        => TXTGmapStatus.Text = $"{Gmap.Position.Lat.ToString().Replace(',', '.')}, {Gmap.Position.Lng.ToString().Replace(',', '.')} x{Gmap.Zoom} Scale:{GetScale()}";
 
         private void BTNAddMarker_Click(object sender, EventArgs e)
         => OverlayMarkers.Markers.Add(new GmapMarkerDot(Gmap.Position));
@@ -146,6 +146,11 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
                 }
                 _movable = list.FirstOrDefault(x => x != null);
             }
+        }
+
+        public double GetScale()
+        {
+            return Gmap.MapProvider.Projection.GetGroundResolution((int)Gmap.Zoom, Gmap.Position.Lat);
         }
     }
 }

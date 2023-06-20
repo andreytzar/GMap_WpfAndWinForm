@@ -26,7 +26,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap.MarkersPol
         {
             Rectangle rect = new Rectangle(LocalPosition, Size);
             g.DrawEllipse(GMapRoute.DefaultStroke, rect);
-            ToolTipText = $"Distance:\n{GMapRoute.Distance}\nScale:";
+            ToolTipText = $"Distance:\n{GMapRoute.Distance}";
         }
 
         public void SetNewPosition(Point newPoint)
@@ -39,6 +39,8 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap.MarkersPol
             Overlay.Control.UpdateMarkerLocalPosition(this);
             Overlay.Control.UpdateRouteLocalPosition(GMapRoute);
         }
+
+
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
         => GetObjectData(info, context);
     }
