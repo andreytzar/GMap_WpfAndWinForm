@@ -26,7 +26,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap.MarkersPol
         {
             Rectangle rect = new Rectangle(LocalPosition, Size);
             g.DrawEllipse(GMapRoute.DefaultStroke, rect);
-            ToolTipText = $"Distance:\n{GMapRoute.Distance}\nScale:{Overlay.Control.Scale()  }";
+            ToolTipText = $"Distance:\n{GMapRoute.Distance}\nScale:";
         }
 
         public void SetNewPosition(Point newPoint)
