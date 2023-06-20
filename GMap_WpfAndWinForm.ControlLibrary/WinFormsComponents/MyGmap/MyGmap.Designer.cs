@@ -33,6 +33,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             panel1 = new System.Windows.Forms.Panel();
             PanelRight = new System.Windows.Forms.Panel();
             PanelLeft = new System.Windows.Forms.Panel();
+            BTNAddRulerRoute = new System.Windows.Forms.Button();
             BTNRoute = new System.Windows.Forms.Button();
             BTNPolygon = new System.Windows.Forms.Button();
             BTNAddMarker = new System.Windows.Forms.Button();
@@ -74,13 +75,26 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             // PanelLeft
             // 
             PanelLeft.BackColor = Color.FromArgb(0, 0, 0, 0);
+            PanelLeft.Controls.Add(BTNAddRulerRoute);
             PanelLeft.Controls.Add(BTNRoute);
             PanelLeft.Controls.Add(BTNPolygon);
             PanelLeft.Controls.Add(BTNAddMarker);
             PanelLeft.Location = new Point(0, 23);
             PanelLeft.Name = "PanelLeft";
-            PanelLeft.Size = new Size(23, 70);
+            PanelLeft.Size = new Size(23, 95);
             PanelLeft.TabIndex = 2;
+            // 
+            // BTNAddRulerRoute
+            // 
+            BTNAddRulerRoute.BackColor = Color.Gainsboro;
+            BTNAddRulerRoute.Location = new Point(0, 69);
+            BTNAddRulerRoute.Margin = new System.Windows.Forms.Padding(0);
+            BTNAddRulerRoute.Name = "BTNAddRulerRoute";
+            BTNAddRulerRoute.Size = new Size(23, 23);
+            BTNAddRulerRoute.TabIndex = 3;
+            BTNAddRulerRoute.Text = "L";
+            BTNAddRulerRoute.UseVisualStyleBackColor = false;
+            BTNAddRulerRoute.Click += BTNAddRulerRoute_Click;
             // 
             // BTNRoute
             // 
@@ -214,6 +228,9 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             Gmap.OnMapClick += Gmap_OnMapClick;
             Gmap.OnPositionChanged += Gmap_OnPositionChanged;
             Gmap.OnMapZoomChanged += Gmap_OnMapZoomChanged;
+            Gmap.MouseDown += Gmap_MouseDown;
+            Gmap.MouseMove += Gmap_MouseMove;
+            Gmap.MouseUp += Gmap_MouseUp;
             // 
             // MyGmap
             // 
@@ -245,5 +262,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
         private System.Windows.Forms.Button BTNAddMarker;
         private System.Windows.Forms.Button BTNPolygon;
         private System.Windows.Forms.Button BTNRoute;
+        private System.Windows.Forms.Button BTNAddRulerRoute;
     }
 }

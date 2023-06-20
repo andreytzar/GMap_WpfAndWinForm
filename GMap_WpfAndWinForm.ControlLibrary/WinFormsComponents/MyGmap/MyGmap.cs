@@ -21,7 +21,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
         private bool addNewRoute = false;
         private Color activecolor = Color.Gainsboro;
         private Color pushedcolor = Color.Blue;
-
+        private IMovable? _movable = null;
         public MyGmap()
         {
             InitializeComponent();
@@ -62,6 +62,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             if (!addNewPolygon) return;
             polygon = new(new List<PointLatLng>(), $"Polygon {OverlayPolygons.Polygons.Count}");
             OverlayPolygons.Polygons.Add(polygon);
+        
         }
 
         private void BTNRoute_Click(object sender, EventArgs e)
@@ -111,6 +112,40 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             if (btn == null) return;
             if (flag) btn.BackColor = pushedcolor;
             else btn.BackColor = activecolor;
+        }
+
+        private void Gmap_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_movable != null && e.Button == MouseButtons.Left)
+                _movable.SetNewPosition(new Point(e.X, e.Y));
+        }
+
+        private void BTNAddRulerRoute_Click(object sender, EventArgs e)
+        {
+            Point start = new Point((int)(Gmap.Width / 2 - Gmap.Width * 0.2), (int)(Gmap.Height / 2 - Gmap.Height * 0.2));
+            Point end = new Point((int)(Gmap.Width / 2 + Gmap.Width * 0.2), (int)(Gmap.Height / 2 + Gmap.Height * 0.2));
+            GmapRulerRoute route = new($"Ruler {OverlayRoutes.Routes.Count}",
+                OverlayRoutes, Gmap.FromLocalToLatLng(start.X, start.Y),
+                Gmap.FromLocalToLatLng(end.X, end.Y));
+        }
+
+        private void Gmap_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) _movable = null;
+        }
+
+        private void Gmap_MouseDown(object sender, MouseEventArgs e)
+        { 
+            if (e.Button == MouseButtons.Left)
+            {
+                List<IMovable> list = new();
+                foreach(var overlay in Gmap.Overlays)
+                {
+                    list.AddRange(overlay.Markers.Where(x => x is IMovable && x.IsMouseOver)
+                        .Select(x => x as IMovable));
+                }
+                _movable = list.FirstOrDefault(x => x != null);
+            }
         }
     }
 }
