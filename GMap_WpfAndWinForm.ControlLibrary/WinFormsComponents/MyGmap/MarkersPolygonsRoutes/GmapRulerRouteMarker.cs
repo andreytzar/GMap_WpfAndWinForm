@@ -3,10 +3,8 @@ using GMap.NET.WindowsForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap.MarkersPolygonsRoutes
 {
@@ -20,7 +18,7 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap.MarkersPol
             Offset=new Point(-3, -3);
             GMapRoute = gMapRoute;
             overlay.Markers.Add(this);
-               ToolTipMode = MarkerTooltipMode.Always;
+           ToolTipMode = MarkerTooltipMode.Always;
         }
         public override void OnRender(Graphics g)
         {

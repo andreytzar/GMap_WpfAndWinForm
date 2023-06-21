@@ -114,12 +114,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
             else btn.BackColor = activecolor;
         }
 
-        private void Gmap_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (_movable != null && e.Button == MouseButtons.Left)
-                _movable.SetNewPosition(new Point(e.X, e.Y));
-        }
-
         private void BTNAddRulerRoute_Click(object sender, EventArgs e)
         {
             Point start = new Point((int)(Gmap.Width / 2 - Gmap.Width * 0.2), (int)(Gmap.Height / 2 - Gmap.Height * 0.2));
@@ -128,12 +122,6 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
                 OverlayRoutes, Gmap.FromLocalToLatLng(start.X, start.Y),
                 Gmap.FromLocalToLatLng(end.X, end.Y));
         }
-
-        private void Gmap_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left) _movable = null;
-        }
-
         private void Gmap_MouseDown(object sender, MouseEventArgs e)
         { 
             if (e.Button == MouseButtons.Left)
@@ -141,13 +129,25 @@ namespace GMap_WpfAndWinForm.ControlLibrary.WinFormsComponents.MyGmap
                 List<IMovable> list = new();
                 foreach(var overlay in Gmap.Overlays)
                 {
-                    list.AddRange(overlay.Markers.Where(x => x is IMovable && x.IsMouseOver)
+                    list.AddRange(overlay.Markers.Where(x =>x!=null && x is IMovable && x.IsMouseOver)
+                        .Select(x => x as IMovable));
+                    list.AddRange(overlay.Polygons.Where(x => x != null && x is IMovable && x.IsMouseOver)
+                        .Select(x => x as IMovable));
+                    list.AddRange(overlay.Routes.Where(x => x != null && x is IMovable && x.IsMouseOver)
                         .Select(x => x as IMovable));
                 }
-                _movable = list.FirstOrDefault(x => x != null);
+                _movable = list.LastOrDefault();
             }
         }
-
+        private void Gmap_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_movable != null && e.Button == MouseButtons.Left)
+                _movable.SetNewPosition(new Point(e.X, e.Y));
+        }
+        private void Gmap_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) _movable = null;
+        }
         public double GetScale()
         {
             return Gmap.MapProvider.Projection.GetGroundResolution((int)Gmap.Zoom, Gmap.Position.Lat);
